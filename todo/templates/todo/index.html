@@ -1,14 +1,7 @@
 {% load static %}
 
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">logout</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
-{% endif %}
-{% endblock %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,12 +18,15 @@
 		<link rel="stylesheet" href="{% static 'todo/styles.css' %}" />
 	</head>
 	<body>
-
+		{% if user.is_authenticated %}
 		<div class="container-fluid" id="wrapper">
 			
 			<div class="row">
 				<div class="col-lg-4 col-lg-offset-4" id="content">
-				
+					{% if user.is_authenticated %}
+					Hi {{ user.username }}!
+					<p><a href="{% url 'logout' %}">logout</a></p>
+				  {% endif %}
 					<form action="{% url 'add' %}" method="POST" role="form">
 						{% csrf_token %}
 						<div class="form-group">
@@ -72,5 +68,27 @@
 				</div>
 			</div>
 		</div>
+		{% endif %}
+		{% if user.is_authenticated == 0 %}
+		<div class="container-fluid"> 
+			<div class="row">
+
+				<div class="col-md-10 col-md-offset-1">
+					<div class="alert alert-warning alert-dismissible fade in text-center" style="margin-top: 100px;background: content-box;" role="alert">
+						<p style="margin-bottom: 10px;">You are not logged in! You must be logged in to use the system.</p>
+						<div class="btn-group">
+						<p><a href="{% url 'login' %}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Click here to login!</a></p>
+						</div>
+						<div class="btn-group">
+						<p><a href="{% url 'signup' %}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Click here to Register!</a></p>
+						</div>
+					</div>
+				</div>
+	
+		  </div>
+		</div>
+		{% endif %}
 	</body>
 </html>
+
+{% endblock %}
