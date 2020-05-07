@@ -5,8 +5,8 @@ from .models import Todo
 from .forms import TodoForm
 
 def index(request):
-    todo_list = Todo.objects.order_by('id')
-
+    todo_list = Todo.objects.order_by('id').filter(username=request.user)
+    
     form = TodoForm()
 
     context = {'todo_list' : todo_list, 'form' : form}
@@ -18,7 +18,7 @@ def addTodo(request):
     form = TodoForm(request.POST)
 
     if form.is_valid():
-        new_todo = Todo(text=request.POST['text'])
+        new_todo = Todo(text=request.POST['text'],username = request.user)
         new_todo.save()
 
     return redirect('index')
