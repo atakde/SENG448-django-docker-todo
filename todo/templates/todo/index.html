@@ -2,20 +2,18 @@
 
 {% block content %}
 
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>ToDo App</title>
+		<title>Todo Application</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-
-		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="{% static 'todo/bs/css/flatly.min.css' %}" />
 		<link rel="stylesheet" href="{% static 'todo/styles.css' %}" />
+
 	</head>
 	<body>
 		{% if user.is_authenticated %}
@@ -74,8 +72,8 @@
 			<div class="row">
 
 				<div class="col-md-10 col-md-offset-1">
-					<div class="alert alert-warning alert-dismissible fade in text-center" style="margin-top: 100px;background: content-box;" role="alert">
-						<p style="margin-bottom: 10px;">You are not logged in! You must be logged in to use the system.</p>
+					<div class="alert alert alert-dismissible fade in text-center" style="margin-top: 300px;background: content-box;" role="alert">
+						<p style="margin-bottom: 10px; color:white">You are not logged in! You must be logged in to use the system.</p>
 						<div class="btn-group">
 						<p><a href="{% url 'login' %}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Click here to login!</a></p>
 						</div>
