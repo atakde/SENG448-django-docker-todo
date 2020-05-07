@@ -72,8 +72,10 @@
 			<div class="row">
 
 				<div class="col-md-10 col-md-offset-1">
-					<div class="alert alert alert-dismissible fade in text-center" style="margin-top: 300px;background: content-box;" role="alert">
-						<p style="margin-bottom: 10px; color:white">You are not logged in! You must be logged in to use the system.</p>
+					<div class="alert alert alert-dismissible fade in text-center" style="margin-top: 200px;background: content-box;" role="alert">
+						<div><img src="{% static "todo/images/index_page.jpg" %}" class="img-responsive" alt="My image" style="opacity: 0.5;
+							border-radius: 10px; margin: auto;"/></div>
+						<p style="margin-bottom: 15px; color:white">You must be logged in to use the system.</p>
 						<div class="btn-group">
 						<p><a href="{% url 'login' %}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Click here to login!</a></p>
 						</div>
